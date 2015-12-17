@@ -1,0 +1,20 @@
+<md-fab-speed-dial md-open="vm.isOpen" md-direction="up"
+                   class="md-scale" ng-mouseleave="vm.isOpen=false">
+    <md-fab-actions class="themes">
+        <div ng-repeat="(themeName, theme) in vm.themes.list" class="theme">
+            <md-button class="md-fab md-raised md-mini"
+                       aria-label="{{themeName}}" ng-click="vm.setActiveTheme(themeName)"
+                       ng-style="{'background-color': theme.primary.color}"
+                       ng-class="themeName">
+                <md-icon md-font-icon="icon-palette"></md-icon>
+            </md-button>
+        </div>
+    </md-fab-actions>
+
+    <md-fab-trigger>
+        <md-button ng-mouseenter="vm.isOpen=true" aria-label="menu" class="menu-button md-fab md-accent">
+            <md-icon md-font-icon="icon-palette"></md-icon>
+        </md-button>
+    </md-fab-trigger>
+
+</md-fab-speed-dial>

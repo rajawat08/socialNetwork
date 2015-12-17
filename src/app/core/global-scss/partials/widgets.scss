@@ -1,0 +1,43 @@
+/*----------------------------------------------------------------*/
+/*  Global Widget Styles
+/*----------------------------------------------------------------*/
+.ms-widget {
+
+    .ms-widget-front {
+        box-shadow: $whiteframe-shadow-z1;
+    }
+
+    .ms-widget-back {
+        box-shadow: $whiteframe-shadow-z1;
+    }
+
+    // Flip to front button
+    .flip-to-front {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    // ie fix
+    .c3 {
+        height: 100%;
+    }
+
+}
+
+/*----------------------------------------------------------------*/
+/*  Stat Widget
+/*----------------------------------------------------------------*/
+.ms-widget {
+
+    &.stat-widget {
+
+        .ms-widget-front {
+
+        }
+
+        .ms-widget-back {
+
+        }
+    }
+}

@@ -1,0 +1,32 @@
+#theme-changer {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 98;
+
+    .menu-button {
+        margin: 0;
+    }
+    .md-button {
+        line-height: 1;
+    }
+    .themes {
+        .theme {
+            .md-button {
+                &.custom {
+                    md-icon:before {
+                        content: "\e96c";
+                    }
+                }
+            }
+        }
+    }
+
+    // ie 10 fix
+    md-fab-speed-dial.md-up {
+        md-fab-actions,
+        md-fab-trigger {
+            -ms-flex-order: 0;
+        }
+    }
+}

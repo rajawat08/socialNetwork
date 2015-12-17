@@ -1,0 +1,94 @@
+<md-dialog class="event-dialog" aria-label="New Message">
+    <form>
+        <md-toolbar class="md-accent md-hue-2">
+            <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+                <span class="title">{{vm.dialogTitle}}</span>
+                <md-button class="md-icon-button" ng-click="vm.closeDialog()" aria-label="Close dialog" translate
+                           translate-attr-aria-label="CALENDAR.CLOSE_DIALOG">
+                    <md-icon md-font-icon="icon-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content ms-scroll>
+            <md-input-container>
+                <label translate="CALENDAR.TITLE">Title</label>
+                <input ng-model="vm.event.title">
+            </md-input-container>
+
+            <md-list class="all-day">
+                <md-list-item>
+                    <p translate="CALENDAR.ALL_DAY">All Day</p>
+                    <md-switch class="md-secondary" ng-model="vm.event.allday" aria-label="All day" translate
+                               translate-attr-aria-label="CALENDAR.ALL_DAY"></md-switch>
+                </md-list-item>
+            </md-list>
+
+            <div layout="row" class="date-row">
+                <md-input-container flex>
+                    <label translate="CALENDAR.START_DATE">Start Date</label>
+                    <input ng-model="vm.event.start">
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label translate="CALENDAR.START_TIME">Start Time</label>
+                    <input ng-model="vm.event.start">
+                </md-input-container>
+            </div>
+
+            <div layout="row" class="date-row">
+                <md-input-container flex>
+                    <label translate="CALENDAR.END_DATE">End Date</label>
+                    <input ng-model="vm.event.endDate">
+                </md-input-container>
+
+                <md-input-container flex>
+                    <label translate="CALENDAR.END_TIME">End Time</label>
+                    <input ng-model="vm.event.endTime">
+                </md-input-container>
+            </div>
+
+            <md-input-container flex>
+                <label translate="CALENDAR.REPEAT">Repeat</label>
+                <input ng-model="vm.event.repeat">
+            </md-input-container>
+
+            <md-input-container flex>
+                <label translate="CALENDAR.LOCATION">Location</label>
+                <input ng-model="vm.event.location">
+            </md-input-container>
+
+            <div class="notifications" layout="column">
+                <div class="title" translate="CALENDAR.NOTIFICATIONS">Notifications</div>
+
+                <md-select ng-model="notification" placeholder="Notification"
+                           ng-repeat="notification in vm.event.notifications">
+                    <md-option ng-repeat="opt in vm.notifications" value="{{opt}}">{{opt}}</md-option>
+                </md-select>
+
+                <md-button aria-label="+ Add Another Notification" translate="CALENDAR.ADD_NOTIFICATION"
+                           translate-attr-aria-label="CALENDAR.ADD_NOTIFICATION">
+                    + Add Another Notification
+                </md-button>
+            </div>
+
+            <md-input-container flex class="textarea-container">
+                <label translate="CALENDAR.NOTES">Notes</label>
+                <textarea ng-model="vm.task.notes" md-maxlength="250"></textarea>
+            </md-input-container>
+        </md-dialog-content>
+
+        <div class="md-actions mail-form-actions" layout="row" layout-align="space-between center">
+            <md-button ng-click="vm.closeDialog()" class="save-button md-accent md-raised" aria-label="SAVE"
+                       translate="CALENDAR.SAVE"
+                       translate-attr-aria-label="CALENDAR.SAVE">
+                SAVE
+            </md-button>
+
+            <md-button class="md-icon-button" aria-label="Delete" translate translate-attr-aria-label="CALENDAR.DELETE">
+                <md-icon md-font-icon="icon-delete"></md-icon>
+                <md-tooltip><span translate="CALENDAR.DELETE">Delete</span></md-tooltip>
+            </md-button>
+        </div>
+    </form>
+</md-dialog>

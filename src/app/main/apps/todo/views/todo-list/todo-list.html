@@ -1,0 +1,61 @@
+<!-- TODO LIST ITEMS -->
+<div class="todo" ng-repeat="task in vm.tasks | filter: vm.search | filter: global.search" md-ink-ripple
+     ng-click="vm.openTaskDialog($event, task)"
+     ng-class="{'starred': task.starred, 'selected': task.selected, 'checked': task.checked}"
+     layout="row" layout-align="start center">
+
+    <md-checkbox class="checkbox" ng-checked="task.checked"
+                 ng-click="vm.toggleCheck(task, $event)" aria-label="{{task.checked? 'Uncheck':'check'}}">
+    </md-checkbox>
+
+    <div layout-gt-sm="row" layout-align-gt-sm="start center" flex>
+
+        <div class="info" flex>
+            <div class="title">
+                {{task.title}}
+            </div>
+
+            <div class="notes">
+                {{task.notes | limitTo:90}}{{task.notes.length > 90 ? '...' : ''}}
+            </div>
+        </div>
+
+        <div class="tags-buttons" layout="row" layout-align="space-between center">
+            <div class="tags" layout="column" layout-align="center end" layout-align-sm="center start">
+                <div class="tag" data-ng-repeat="tag in task.tags"
+                     ng-style="{'background-color': tag.color}">
+                    {{tag.title}}
+                </div>
+            </div>
+
+            <div>
+                <md-menu>
+                    <md-button class="md-icon-button" aria-label="More" translate translate-attr-aria-label="TODO.MORE">
+                        <md-icon md-font-icon="icon-dots-vertical" ng-click="$mdOpenMenu($event)"></md-icon>
+                    </md-button>
+
+                    <md-menu-content width="3">
+                        <md-menu-item>
+                            <md-button aria-label="Mark as done" translate="TODO.MARK_AS_DONE"
+                                       translate-attr-aria-label="TODO.MARK_AS_DONE">Mark as done
+                            </md-button>
+                        </md-menu-item>
+
+                        <md-menu-item>
+                            <md-button aria-label="Mark as important" translate="TODO.MARK_AS_IMPORTANT"
+                                       translate-attr-aria-label="TODO.MARK_AS_IMPORTANT">Mark as important
+                            </md-button>
+                        </md-menu-item>
+
+                        <md-menu-item>
+                            <md-button aria-label="Add star" translate="TODO.ADD_STAR"
+                                       translate-attr-aria-label="TODO.ADD_STAR">Add star
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- / TODO LIST ITEMS -->

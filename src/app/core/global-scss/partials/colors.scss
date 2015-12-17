@@ -1,0 +1,85 @@
+/*----------------------------------------------------------------*/
+/*  Colors
+/*----------------------------------------------------------------*/
+
+// Black text
+.black-text {
+    color: rgba(0, 0, 0, 0.87) !important;
+
+    &.secondary-text,
+    .secondary-text,
+    &.icon,
+    .icon {
+        color: rgba(0, 0, 0, 0.54) !important;
+    }
+
+    &.hint-text,
+    .hint-text,
+    &.disabled-text,
+    .disabled-text {
+        color: rgba(0, 0, 0, 0.26) !important;
+    }
+
+    &.divider,
+    .divider,
+    &.faint-text,
+    .faint-text {
+        color: rgba(0, 0, 0, 0.12) !important;
+    }
+}
+
+// White text
+.white-text {
+    color: rgb(255, 255, 255) !important;
+
+    &.secondary-text,
+    .secondary-text,
+    &.icon,
+    .icon {
+        color: rgba(255, 255, 255, 0.70) !important;
+    }
+
+    &.hint-text,
+    .hint-text,
+    &.disabled-text,
+    .disabled-text {
+        color: rgba(255, 255, 255, 0.30) !important;
+    }
+
+    &.divider,
+    .divider,
+    &.faint-text,
+    .faint-text {
+        color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    // Angular material element color override
+    md-icon {
+        color: $material-color-white;
+    }
+
+    md-progress-linear {
+
+        .md-container {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .md-bar {
+            background: rgba(255, 255, 255, 0.7);
+        }
+    }
+}
+
+// Material colors
+$colors: map_keys($materialColorsMap);
+
+@each $color in $colors {
+
+    .md-#{$color}-bg {
+        background-color: map_get($materialColorsMap, $color);
+    }
+
+    .md-#{$color}-fg {
+        color: map_get($materialColorsMap, $color);
+    }
+}

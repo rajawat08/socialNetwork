@@ -1,0 +1,20 @@
+/*----------------------------------------------------------------*/
+/*  Icons
+/*----------------------------------------------------------------*/
+md-icon[md-font-icon],
+i {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+
+    @for $size from 1 through 32 {
+
+        &.s#{$size * 8} {
+            font-size: #{($size * 8) + 'px'} !important;
+            width: #{($size * 8) + 'px'} !important;
+            height: #{($size * 8) + 'px'} !important;
+            line-height: #{($size * 8) + 'px'} !important;
+        }
+    }
+}

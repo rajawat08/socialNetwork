@@ -1,0 +1,109 @@
+// Variables
+$toolbarHeight: 64px;
+
+#toolbar {
+    height: $toolbarHeight;
+    min-height: $toolbarHeight;
+    max-height: $toolbarHeight;
+    z-index: 55;
+    overflow: hidden;
+
+    #navigation-toggle {
+        width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.13);
+        border-radius: 0;
+    }
+
+    #navigation-sidenav-mode-toggle {
+        width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.13);
+        border-radius: 0;
+
+        md-icon {
+            transition: transform 0.3s ease-in-out 0.1s;
+            transform: rotate(0deg);
+        }
+    }
+
+    #search {
+        font-size: 13px;
+
+        label {
+            padding: 0 16px 0 24px;
+            md-icon {
+                line-height: $toolbarHeight;
+            }
+        }
+
+        #search-input {
+            min-height: $toolbarHeight;
+            background-color: transparent;
+        }
+    }
+
+    #toolbar-progress {
+        position: relative;
+        top: -10px;
+        height: 32px;
+        min-height: 32px;
+        max-height: 32px;
+    }
+
+    #user-menu {
+        height: $toolbarHeight;
+        .user-button {
+            margin: 0;
+            padding: 0 16px;
+            height: $toolbarHeight;
+            text-transform: none;
+
+            .username {
+                margin: 0 12px 0 8px;
+            }
+        }
+    }
+
+    #quick-panel-toggle {
+        width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-left: 1px solid rgba(0, 0, 0, 0.13);
+        border-radius: 0;
+    }
+
+}
+
+.navigation-folded {
+
+    #toolbar {
+
+        #navigation-sidenav-mode-toggle {
+
+            md-icon {
+                transition: transform 0.3s ease-in-out 0.1s;
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+// RESPONSIVE
+
+@media screen and (max-width: $breakpoint-sm) {
+
+    #toolbar {
+        #user-menu {
+            .user-button {
+                min-width: 40px;
+                padding: 0;
+            }
+        }
+        #search label {
+            padding: 0 8px 0 12px;
+        }
+    }
+}

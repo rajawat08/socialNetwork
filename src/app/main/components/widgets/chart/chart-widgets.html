@@ -1,0 +1,291 @@
+<div id="chart-widgets" class="page-layout simple fullwidth doc-page">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+
+        <div layout="column" layout-align="center start">
+            <div class="breadcrumb" layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+                <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+                <span class="parent">WIDGETS</span>
+            </div>
+            <div class="title">Chart Widgets</div>
+        </div>
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <p class="h4 margin-16">
+            Here you can see some of the stat widget styles. These are just tiny example of what you can do with using
+            widget directive and helper classes. You are not limited to
+            these styles or widgets, you can easily create wide variety of widgets.
+        </p>
+
+        <!-- WIDGET GROUP -->
+        <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+            <!-- WIDGET 1 -->
+            <ms-widget class="chart-widget height-250" layout="column" flex="100" flex-gt-sm="50" flex-gt-lg="25">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-red-bg white-text" layout="column" layout-align="space-between"
+                                 flex>
+                    <div class="padding-bottom-16">
+                        <div class="h4 weight-500 padding-bottom-8">{{vm.widget1.title}}</div>
+
+                        <div layout="row" layout-align="start center">
+                            <div class="padding-right-8">
+                                <md-icon md-font-icon="icon-alert" class="s24 hint-text"></md-icon>
+                            </div>
+
+                            <div class="h1 secondary-text">{{vm.widget1.value}}%</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <c3chart class="c3 stroke-2" bindto-id="cpu-usage">
+                            <chart-column ng-repeat="column in vm.widget1.chart.columns"
+                                          column-id="{{column.id}}"
+                                          column-name="{{column.name}}"
+                                          column-color="{{column.color}}"
+                                          column-values="{{column.values}}"
+                                          column-type="{{column.type}}"
+                                    />
+                            <chart-axis>
+                                <chart-axis-y show="false"></chart-axis-y>
+                            </chart-axis>
+                            <chart-legend show-legend="false"/>
+                            <chart-size chart-height="120"/>
+                        </c3chart>
+                    </div>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 1 -->
+
+            <!-- WIDGET 2 -->
+            <ms-widget class="chart-widget height-250" layout="column" flex="100" flex-gt-sm="50" flex-gt-lg="25">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-white-bg" layout="column" layout-align="space-between" flex>
+                    <div class="padding-bottom-16">
+                        <div class="h4 weight-500 padding-bottom-8">{{vm.widget2.title}}</div>
+                        <div layout="row" layout-align="start center">
+                            <div class="h1 secondary-text">{{vm.widget2.value}}</div>
+                            <md-icon md-font-icon="icon-trending-up" class="margin-horizontal-8"></md-icon>
+                        </div>
+                    </div>
+
+                    <div>
+                        <c3chart class="c3 stroke-2" bindto-id="stock">
+                            <chart-column ng-repeat="column in vm.widget2.chart.columns"
+                                          column-id="{{column.id}}"
+                                          column-name="{{column.name}}"
+                                          column-color="{{column.color}}"
+                                          column-values="{{column.values}}"
+                                          column-type="{{column.type}}"
+                                    />
+                            <chart-axis>
+                                <chart-axis-x show="false"></chart-axis-x>
+                                <chart-axis-y show="false"></chart-axis-y>
+                            </chart-axis>
+                            <chart-legend show-legend="false"/>
+                            <chart-size chart-height="120"/>
+                        </c3chart>
+                    </div>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 2 -->
+
+            <!-- WIDGET 3 -->
+            <ms-widget class="chart-widget height-250" layout="column" flex="100" flex-gt-lg="50">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-white-bg" layout="column" layout-align="space-between" flex>
+                    <div class="padding-bottom-16">
+                        <div class="h4 weight-500 padding-bottom-8">{{vm.widget3.title}}</div>
+                        <div class="secondary-text">{{vm.widget3.subtitle}}</div>
+                    </div>
+
+                    <div>
+                        <c3chart class="c3 stroke-2" bindto-id="io-rate">
+                            <chart-column ng-repeat="column in vm.widget3.chart.columns"
+                                          column-id="{{column.id}}"
+                                          column-name="{{column.name}}"
+                                          column-color="{{column.color}}"
+                                          column-values="{{column.values}}"
+                                          column-type="{{column.type}}"
+                                    />
+                            <chart-axis>
+                                <chart-axis-y show="false"></chart-axis-y>
+                            </chart-axis>
+                            <chart-size chart-height="120"/>
+                        </c3chart>
+                    </div>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 3 -->
+
+        </div>
+        <!-- / WIDGET GROUP -->
+
+
+        <!-- WIDGET GROUP -->
+        <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+            <!-- WIDGET 4 -->
+            <ms-widget class="chart-widget height-300" layout="column" flex="100" flex-gt-lg="50">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-white-bg" layout="row" layout-align="space-between" flex>
+                    <div class="margin-right-16">
+                        <div class="h4 weight-500 padding-bottom-8">{{vm.widget4.title}}</div>
+                        <div class="h1 secondary-text">{{vm.widget4.value | number}}</div>
+                        <div class="padding-top-8" layout="row" layout-align="start center">
+                            <div>LW: {{vm.widget4.lastWeekValue | number}}</div>
+                            <div class="text-boxed">{{vm.widget4.lastWeekDiff}}</div>
+                        </div>
+                    </div>
+
+                    <c3chart flex bindto-id="weekly-visitors">
+                        <chart-column ng-repeat="column in vm.widget4.chart.columns"
+                                      column-id="{{column.id}}"
+                                      column-name="{{column.name}}"
+                                      column-color="{{column.color}}"
+                                      column-values="{{column.values}}"
+                                      column-type="{{column.type}}"
+                                />
+                        <chart-legend show-legend="false"/>
+                        <chart-bar width="10"/>
+                        <chart-size chart-height="240"/>
+                    </c3chart>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 4 -->
+
+            <!-- WIDGET 5 -->
+            <ms-widget class="chart-widget height-300" layout="column" flex="100" flex-gt-lg="50">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-light-blue-bg white-text" layout="row"
+                                 layout-align="space-between" flex>
+                    <div class="margin-right-16">
+                        <div class="h1 weight-500 padding-bottom-8">{{vm.widget5.title}}</div>
+                        <div class="h4 secondary-text weight-500 padding-bottom-8">{{vm.widget5.subtitle}}</div>
+                        <div layout="row" layout-align="start center">
+                            <div class="md-display-1 padding-right-8">{{vm.widget5.value}}</div>
+                            <md-icon md-font-icon="icon-trending-up" class="s24"></md-icon>
+                        </div>
+                    </div>
+
+                    <c3chart flex bindto-id="goog-nasdaq">
+                        <chart-column ng-repeat="column in vm.widget5.chart.columns"
+                                      column-id="{{column.id}}"
+                                      column-name="{{column.name}}"
+                                      column-color="{{column.color}}"
+                                      column-values="{{column.values}}"
+                                      column-type="{{column.type}}"
+                                />
+                        <chart-legend show-legend="false"/>
+                        <chart-bar width="10"/>
+                        <chart-size chart-height="240"/>
+                    </c3chart>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 5 -->
+
+        </div>
+        <!-- / WIDGET GROUP -->
+
+
+        <!-- WIDGET GROUP -->
+        <div class="widget-group height-300" layout="row" flex="100" layout-wrap>
+
+            <!-- WIDGET 6 -->
+            <ms-widget class="chart-widget" layout="column" flex="100">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-white-bg" layout="column" layout-align="space-between" flex>
+                    <div class="padding-bottom-16">
+                        <div class="h3 weight-500 padding-bottom-8">{{vm.widget6.title}}</div>
+                        <div class="secondary-text">{{vm.widget6.subtitle}}</div>
+                    </div>
+
+                    <div>
+                        <c3chart class="c3 stroke-2" bindto-id="memory">
+                            <chart-column ng-repeat="column in vm.widget6.chart.columns"
+                                          column-id="{{column.id}}"
+                                          column-name="{{column.name}}"
+                                          column-color="{{column.color}}"
+                                          column-values="{{column.values}}"
+                                          column-type="{{column.type}}"
+                                    />
+                            <chart-axis>
+                                <chart-axis-y show="false"></chart-axis-y>
+                            </chart-axis>
+                            <chart-legend show-legend="false"/>
+                            <chart-size chart-height="120"/>
+                        </c3chart>
+                    </div>
+
+                    <md-divider class="margin-vertical-16"></md-divider>
+
+                    <div>{{vm.widget6.text}}</div>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 6 -->
+
+        </div>
+        <!-- / WIDGET GROUP -->
+
+
+        <!-- WIDGET GROUP -->
+        <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+            <!-- WIDGET 7 -->
+            <ms-widget class="chart-widget height-500" layout="column" flex="100">
+
+                <!-- Front -->
+                <ms-widget-front class="padding-16 md-white-bg" layout="column" layout-align="space-between" flex>
+                    <div class="padding-bottom-16">
+                        <div class="h3 weight-500 padding-bottom-8">{{vm.widget7.title}}</div>
+                        <div class="secondary-text">{{vm.widget7.subtitle}}</div>
+                    </div>
+
+                    <c3chart class="c3 stroke-2" bindto-id="sales">
+                        <chart-column ng-repeat="column in vm.widget7.chart.columns"
+                                      column-id="{{column.id}}"
+                                      column-name="{{column.name}}"
+                                      column-color="{{column.color}}"
+                                      column-values="{{column.values}}"
+                                      column-type="{{column.type}}"
+                                />
+                        <chart-size chart-height="360"/>
+                    </c3chart>
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 7 -->
+
+        </div>
+        <!-- / WIDGET GROUP -->
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

@@ -1,0 +1,21 @@
+@import 'partials/reset';
+@import 'partials/fixes';
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/angular-material-extend';
+@import 'partials/animations';
+@import 'partials/colors';
+@import 'partials/icons';
+@import 'partials/layouts';
+@import 'partials/material';
+@import 'partials/typography';
+@import 'partials/widgets';
+
+@import 'partials/plugins/c3';
+@import 'partials/plugins/chartist';
+@import 'partials/plugins/datatable';
+@import 'partials/plugins/highlight';
+@import 'partials/plugins/perfect-scrollbar';
+@import 'partials/plugins/text-angular';
+
+@import 'partials/helpers';

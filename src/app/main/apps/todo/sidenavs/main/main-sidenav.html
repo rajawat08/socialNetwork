@@ -1,0 +1,96 @@
+<!-- SIDENAV HEADER -->
+<div class="header" layout="column" layout-align="space-between">
+
+    <div class="logo" layout="row" layout-align="start center">
+        <span class="logo-icon">
+            <md-icon md-font-icon="icon-checkbox-marked" class="s24"></md-icon>
+        </span>
+        <span class="logo-text" translate="TODO.TO_DO">To-Do</span>
+    </div>
+
+    <md-select class="project-selection simplified"
+               ng-model="vm.selectedProject"
+               placeholder="Select Project"
+               translate translte-attr-placeholder="TODO.SELECT_PROJECT">
+        <md-option ng-repeat="(project, title) in vm.projects" value="{{project}}">
+            {{title}}
+        </md-option>
+    </md-select>
+
+</div>
+<!-- / SIDENAV HEADER -->
+
+<!-- SIDENAV CONTENT -->
+<md-content class="content" flex ms-scroll>
+
+    <div class="add-task-button">
+        <md-button class="md-accent md-raised" ng-click="vm.openTaskDialog($event)" aria-label="ADD TASK"
+                   translate="TODO.ADD_TASK" translate-attr-aria-label="TODO.ADD_TASK">
+            ADD TASK
+        </md-button>
+    </div>
+
+    <div class="navigation-simple" layout="column">
+        <md-button class="item" aria-label="All Tasks" translate translate-attr-aria-label="TODO.ALL_TASKS">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-view-headline" class="s16"></md-icon>
+                <span class="title" translate="TODO.ALL_TASKS">All Tasks</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Starred" translate translate-attr-aria-label="TODO.STARRED">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-star" class="s16"></md-icon>
+                <span class="title" translate="TODO.STARRED">Starred</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Priority" translate translate-attr-aria-label="TODO.PRIORITY">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-alert-circle" class="s16"></md-icon>
+                <span class="title" translate="TODO.PRIORITY">Priority</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Scheduled" translate translate-attr-aria-label="TODO.SCHEDULED">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-clock" class="s16"></md-icon>
+                <span class="title" translate="TODO.SCHEDULED">Scheduled</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Today" translate translate-attr-aria-label="TODO.TODAY">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-calendar-today" class="s16"></md-icon>
+                <span class="title" translate="TODO.TODAY">Today</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Done" translate translate-attr-aria-label="TODO.DONE">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-check" class="s16"></md-icon>
+                <span class="title" translate="TODO.DONE">Done</span>
+            </div>
+        </md-button>
+
+        <md-button class="item" aria-label="Deleted" translate translate-attr-aria-label="TODO.DELETED">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-delete" class="s16"></md-icon>
+                <span class="title" translate="TODO.DELETED">Deleted</span>
+            </div>
+        </md-button>
+
+        <div class="item subheader" translate="TODO.TAGS">
+            Tags
+        </div>
+
+        <md-button class="item" aria-label="tag {{tag.title}}" ng-repeat="tag in vm.tags">
+            <div layout="row" layout-align="start center">
+                <md-icon md-font-icon="icon-label" class="s16" ng-style="{'color' : tag.color}"></md-icon>
+                <span class="title">{{tag.title}}</span>
+            </div>
+        </md-button>
+    </div>
+
+</md-content>
+<!-- / SIDENAV CONTENT -->
