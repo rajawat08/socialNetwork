@@ -28,23 +28,28 @@
             'app.todo',
 
             // Pages
-            'app.pages.auth.login',
-            'app.pages.auth.register',
-            'app.pages.auth.forgot-password',
-            'app.pages.auth.lock',
-            'app.pages.coming-soon',
-            'app.pages.error-404',
-            'app.pages.error-500',
-            'app.pages.invoice',
-            'app.pages.maintenance',
-            'app.pages.profile',
-            'app.pages.search',
-            'app.pages.timeline',
+            // 'app.pages.auth.login',
+            // 'app.pages.auth.register',
+            // 'app.pages.auth.forgot-password',
+            // 'app.pages.auth.lock',
+            // 'app.pages.coming-soon',
+            // 'app.pages.error-404',
+            // 'app.pages.error-500',
+            // 'app.pages.invoice',
+            // 'app.pages.maintenance',
+            // 'app.pages.profile',
+            // 'app.pages.search',
+            // 'app.pages.timeline',
 
             // User Interface
             'app.ui',
 
             // Components
-            'app.components'
+            'app.components',
+
+            // added by rajawat
+            'app.auth.login',
+            'app.auth.register',
+            'app.auth.forgot-password'
         ]);
 })();

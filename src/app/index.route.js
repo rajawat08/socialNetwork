@@ -11,8 +11,8 @@
     {
         $locationProvider.html5Mode(true);
 
-        $urlRouterProvider.otherwise('/dashboard');
-
+        //$urlRouterProvider.otherwise('/dashboard');
+        $urlRouterProvider.otherwise('/auth/login');
         $stateProvider
             .state('app', {
                 abstract: true,
