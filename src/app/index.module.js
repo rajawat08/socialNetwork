@@ -50,6 +50,7 @@
             // added by rajawat
             'app.auth.login',
             'app.auth.register',
-            'app.auth.forgot-password'
+            'app.auth.forgot-password',
+            'app.profile'
         ]);
 })();

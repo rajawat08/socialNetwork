@@ -7,6 +7,7 @@
         <div class="title" translate="LOGIN.TITLE">Log in to your account</div>
 
         <form>
+            <span ng-show="vm.loginMsg"> {{vm.loginMsg}}</span>
             <md-input-container flex md-no-float>
                 <input ng-model="vm.form.username" placeholder="Username" translate
                        translate-attr-placeholder="LOGIN.USERNAME">
@@ -27,7 +28,7 @@
             </div>
 
             <md-button class="md-raised md-accent" aria-label="LOG IN" translate="LOGIN.LOG_IN"
-                       translate-attr-aria-label="LOGIN.LOG_IN">
+                       translate-attr-aria-label="LOGIN.LOG_IN" ng-click="vm.login()">
                 LOG IN
             </md-button>
         </form>

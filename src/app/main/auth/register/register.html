@@ -7,8 +7,9 @@
         <div class="title" translate="REGISTER.TITLE">Create an account</div>
 
         <form>
+            <span ng-show="vm.signUpMsg"> {{vm.signUpMsg}}</span>
             <md-input-container flex md-no-float>
-                <input ng-model="vm.form.username" placeholder="Name" translate
+                <input ng-model="vm.form.name" placeholder="Name" translate
                        translate-attr-placeholder="REGISTER.NAME">
             </md-input-container>
 
@@ -28,14 +29,14 @@
             </md-input-container>
 
             <div class="terms" layout="row" layout-align="start center" layout-align-sm="center center">
-                <md-checkbox ng-model="data.cb1" aria-label="I read and accept"></md-checkbox>
+                <md-checkbox ng-model="vm.form.termCondition" aria-label="I read and accept"></md-checkbox>
                 <div layout="row" layout-sm="column" layout-align="start center">
                     <span translate="REGISTER.READ_ACCEPT">I read and accept</span>
                     <a href="#" class="md-accent-color" translate="REGISTER.TERMS_COND">terms and conditions</a>
                 </div>
             </div>
 
-            <md-button class="md-raised md-accent" aria-label="CREATE MY ACCOUNT" translate="REGISTER.CREATE_ACCOUNT"
+            <md-button class="md-raised md-accent" ng-click="vm.register()" aria-label="CREATE MY ACCOUNT" translate="REGISTER.CREATE_ACCOUNT"
                        translate-attr-aria-label="REGISTER.CREATE_ACCOUNT">
                 CREATE MY ACCOUNT
             </md-button>

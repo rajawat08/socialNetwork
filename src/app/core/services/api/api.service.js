@@ -4,7 +4,155 @@
 
     angular.module('app.core')
         .factory('api', apiService)
+        .factory('auth', httpApiService)
+        .factory('userService', userService)
         .factory('apiResolver', apiResolverService);
+
+    function userService($http,$q,$rootScope){
+
+        var userService = {};
+        userService.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        userService.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
+
+        userService.getUserProfile = function(username){
+            var deferred = $q.defer();
+             console.log("getUserProfile METHOD",username);
+             var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth,
+                    "username" : username
+                }
+            });
+            
+            $http({
+                method: 'POST',
+                url: userService.dataUrl + 'member/profile',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+
+
+
+        }
+        return userService;
+
+    }
+
+    function httpApiService($http,$q,$location,$rootScope){
+        var auth = {};
+        auth.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        auth.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
+
+        auth.login = function(user,pass){
+            var deferred = $q.defer();
+            console.log("LOGIN METHOD");
+
+            var data = JSON.stringify({               
+                "data": {
+                    "username": user,
+                    "password": pass
+                }
+            });
+
+            console.info(data);
+            $http({
+                method: 'POST',
+                url: auth.dataUrl + 'auth/login',
+                headers: {
+                    //'Allow-Control-Allow-Origin' : '*',
+                    //'Authorization': auth.authorization
+                },
+                cache: true,
+                data: data
+                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+            return deferred.promise;
+        }
+
+        auth.getUserData = function(userAuth){
+            var deferred = $q.defer();
+            console.log("LOGIN METHOD",userAuth);
+
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth
+                }
+            });
+            
+            $http({
+                method: 'POST',
+                url: auth.dataUrl + 'auth/userdata',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+        }
+
+        auth.logout = function(){
+            var deferred = $q.defer();
+            console.log("logout METHOD");
+            var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth
+                }
+            });
+            
+            $http({
+                method: 'POST',
+                url: auth.dataUrl + 'auth/logout',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                if(response.status){
+                    localStorage.removeItem("authorization");
+                    $rootScope.userData = null;
+                    $location.path("/auth/login");
+                }
+                //return;
+                return deferred.resolve(response.status);
+            });
+
+            return deferred.promise;
+        }
+
+        auth.register = function(userData){
+            var deferred = $q.defer();
+            console.log("register METHOD");
+            
+            var data = JSON.stringify({               
+                "data": userData
+            });
+            
+            $http({
+                method: 'POST',
+                url: auth.dataUrl + 'auth/register',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);                
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+        }
+
+        return auth;
+    }
 
     /** @ngInject */
     function apiService($resource)

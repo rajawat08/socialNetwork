@@ -3,17 +3,17 @@
     'use strict';
 
     angular
-        .module('app.pages.profile', [])
+        .module('app.profile', [])
         .config(config);
 
     /** @ngInject */
     function config($stateProvider, $translatePartialLoaderProvider)
     {
-        $stateProvider.state('app.pages_profile', {
-            url  : '/pages/profile',
+        $stateProvider.state('app.profile', {
+            url  : '/profile/:username',
             views: {
                 'content@app': {
-                    templateUrl: 'app/main/pages/profile/profile.html',
+                    templateUrl: 'app/main/profile/profile.html',
                     controller : 'ProfileController as vm'
                 }
             },
@@ -33,7 +33,7 @@
             }
         });
 
-        $translatePartialLoaderProvider.addPart('app/main/pages/profile');
+        $translatePartialLoaderProvider.addPart('app/main/profile');
 
     }
 

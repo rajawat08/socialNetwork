@@ -6,7 +6,7 @@
         .controller('ToolbarController', ToolbarController);
 
     /** @ngInject */
-    function ToolbarController($rootScope, $mdSidenav, msNavFoldService)
+    function ToolbarController($rootScope, $mdSidenav, msNavFoldService,$scope,auth)
     {
         var vm = this;
 
@@ -18,9 +18,16 @@
         // Methods
         vm.toggleSidenav = toggleSidenav;
         vm.toggleNavigationSidenavFold = toggleNavigationSidenavFold;
-
+        vm.menuLogout = menuLogout;
+        vm.userNavigation = {
+                           'Logout' : null
+                        };
         //////////
+        $scope.menuLogout = function(){
+            console.log('scope menu logout');
+            auth.logout();
 
+        }
         /**
          * Toggle sidenav
          *
@@ -39,6 +46,11 @@
             event.preventDefault();
 
             msNavFoldService.toggleFold();
+        }
+
+        function menuLogout(){
+            console.log("logout method");
+
         }
     }
 

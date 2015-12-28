@@ -33,25 +33,31 @@
                        translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
                 <div layout="row" layout-align="space-between center">
                     <img class="avatar" src="assets/images/avatars/profile.jpg">
-                    <span class="username" hide-sm>John Doe</span>
+                    <span class="username" hide-sm>{{userData.name}}</span>
                     <md-icon md-menu-origin md-menu-align-target md-font-icon="icon-chevron-down"
                              class="icon s16" hide-sm></md-icon>
                 </div>
             </md-button>
 
             <md-menu-content  width="3">
-                <md-menu-item ng-repeat="item in [1, 2, 3]">
+               <!--  <md-menu-item ng-repeat="item in [1, 2, 3]">
                     <md-button ng-click="ctrl.announceClick($index)">
                         <md-icon md-font-icon="icon-cog" class="icon s16"></md-icon>
                         <p>Option {{item}}</p>
                     </md-button>
-                </md-menu-item>
+                </md-menu-item> -->
+               <md-menu-item >
+                    <md-button ng-click="menuLogout()" >
+                        <md-icon md-font-icon="icon-cog" class="icon s16"></md-icon>
+                        <p>Logout</p>
+                    </md-button>
+                </md-menu-item>   
             </md-menu-content>
         </md-menu>
 
-        <md-button id="quick-panel-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('quick-panel')"
+        <!-- <md-button id="quick-panel-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('quick-panel')"
                    aria-label="Toggle quick panel" translate translate-attr-aria-label="TOOLBAR.TOGGLE_QUICK_PANEL">
             <md-icon md-font-icon="icon-format-list-bulleted" class="icon"></md-icon>
-        </md-button>
+        </md-button> -->
     </div>
 </div>
