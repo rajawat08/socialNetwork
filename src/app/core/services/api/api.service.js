@@ -11,7 +11,8 @@
     function userService($http,$q,$rootScope){
 
         var userService = {};
-        userService.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        //userService.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        userService.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
         userService.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
 
         userService.getUserProfile = function(username){
@@ -73,7 +74,7 @@
 
     function httpApiService($http,$q,$location,$rootScope){
         var auth = {};
-        auth.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        auth.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
         auth.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
 
         auth.login = function(user,pass){

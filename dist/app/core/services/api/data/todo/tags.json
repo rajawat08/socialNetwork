@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "title": "Meeting Planning",
+            "color": "#388E3C"
+        },
+        {
+            "title": "Personal Project",
+            "color": "#F44336"
+        },
+        {
+            "title": "Github Client",
+            "color": "#FF9800"
+        },
+        {
+            "title": "Server",
+            "color": "#0091EA"
+        }
+    ]
+}
