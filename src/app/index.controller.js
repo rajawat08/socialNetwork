@@ -25,6 +25,9 @@
             $rootScope.userData = response.data;
         })
 
+        $scope.regions = ['Alaska', 'Arizona'];
+        $scope.countries = ['United States'];
+
         
     }
 })();

@@ -11,6 +11,10 @@ class UsersTableSeeder extends Seeder {
             'password' => 'rajawat',
         ]);
 
+        UserInfo::create([
+        	'user_id' => $user->id
+        ]);
+
 	}
 
 }

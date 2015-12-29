@@ -9,7 +9,7 @@
             <div class="content">
                 <div class="info-line">
                     <div class="title" translate="PROFILE.GENDER">Gender</div>
-                    <div class="info">{{vm.about.info.gender ? vm.about.info.gender : "N/A" }}</div>
+                    <div class="info">{{vm.about.info.gender ? (vm.about.info.gender == 'M' ? 'Male' : 'Female')  : "N/A" }}</div>
                 </div>
 
                 <div class="info-line">
@@ -18,7 +18,9 @@
                 </div>
 
                 <div class="info-line">
-                    <div class="title" translate="PROFILE.LOCATIONS">Locations</div>
+                    <div class="title" translate="PROFILE.LOCATIONS">Locations                
+                    </div>
+                    
                     <div class="info location" ng-repeat="location in vm.about.general.locations">
                         <span>N/A</span>
                         <md-icon md-font-icon="icon-map-marker" class="s16"></md-icon>
@@ -27,7 +29,7 @@
 
                 <div class="info-line">
                     <div class="title" translate="PROFILE.ABOUT_ME">About Me</div>
-                    <div class="info">{{vm.about.info.aboutme ? vm.about.info.aboutme : "N/A" }}</div>
+                    <div class="info"  ng-bind-html="vm.getAboutMe()"></div>
                 </div>
             </div>
         </div>
@@ -68,15 +70,15 @@
                 <div class="info-line">
                     <div class="title" translate="PROFILE.ADDRESS">Address</div>
                     <div class="info">
-                        {{vm.about.info.address ? vm.about.info.address : "N/A" }}
-                        {{vm.about.info.city ? ",".vm.about.info.city : "" }}
-                        {{vm.about.info.region ? ",".vm.about.info.region : "" }}
-                        {{vm.about.info.country ? ",".vm.about.info.country : "" }}
+                        {{vm.about.info.Address ? vm.about.info.Address : "N/A" }}
+                        {{vm.about.info.city ? vm.about.info.city : "" }}
+                        {{vm.about.info.region ? vm.about.info.region : "" }}
+                        {{vm.about.info.country ? vm.about.info.country : "" }}
                     </div>
                 </div>
                 <div class="info-line">
                     <div class="title" translate="PROFILE.TEL">Tel.</div>
-                    <div class="info" ng-repeat="tel in vm.about.contact.tel">
+                    <div class="info" >
                         <span>{{vm.about.info.phone ? vm.about.info.phone : "N/A" }}</span>
                     </div>
                 </div>

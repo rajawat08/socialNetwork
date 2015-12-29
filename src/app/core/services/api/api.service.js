@@ -40,6 +40,33 @@
 
 
         }
+
+        userService.updateProfile = function(information){
+            var deferred = $q.defer();
+             console.log("updateProfile METHOD",information);
+             var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth,
+                    "info" : information
+                }
+            });
+            
+            $http({
+                method: 'POST',
+                url: userService.dataUrl + 'member/profile-update',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+
+
+
+        }
         return userService;
 
     }

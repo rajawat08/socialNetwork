@@ -1,1 +1,120 @@
-HEllo world
+<div layout="row" layout-wrap>
+
+    <div class="about" layout="column" flex>
+
+    	<div class="profile-box info-box general md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg">
+                <div class="title" translate="PROFILE.GENERAL_INFORMATION">General Information</div>
+            </header>
+
+            <div class="content" layout="row" layout-wrap>
+                <div class="info-line" flex="50">
+                   <md-input-container>
+					    <label>Name</label>
+					    <input ng-model="vm.about.name">
+					</md-input-container>
+                </div>
+
+                <div class="info-line" flex="50">
+                    <md-input-container>
+					    <label>Username</label>
+					    <input ng-model="vm.about.username">
+					</md-input-container>
+                </div>
+
+                <div  flex="50">
+                    <md-input-container>
+					    <label>Primary Email</label>
+					    <input ng-model="vm.about.email">
+					</md-input-container>
+                </div>
+
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Password</label>
+					    <input ng-model="vm.about.password" type="password">
+					</md-input-container>
+                </div>
+                <div  flex="50">                	
+                	<label>Birthday </label>
+                   <md-datepicker ng-model="vm.about.info.birthday" md-placeholder="Enter Date of birth"></md-datepicker>
+
+                </div>
+                <div  flex="30">
+                   <md-input-container>
+			        <label>Gender</label>
+			        <md-select ng-model="vm.about.info.gender">
+			          <md-option value="M">
+			            Male
+			          </md-option>
+			          <md-option value="F">
+			            Female
+			          </md-option>
+			        </md-select>
+			      </md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Address</label>
+					    <input ng-model="vm.about.info.Address">
+					</md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>City</label>
+					    <input ng-model="vm.about.info.city">
+					</md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Region/State</label>
+					     <md-select ng-model="vm.about.info.region">
+			          <md-option ng-repeat="state in regions" value="{{state}}">
+			            {{state}}
+			          </md-option>
+			          
+			        </md-select>
+					</md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Country</label>
+					    <md-select ng-model="vm.about.info.country">
+			          <md-option ng-repeat="country in countries" value="{{country}}">
+			            {{country}}
+			          </md-option>
+					</md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Phone</label>
+					    <input ng-model="vm.about.info.phone">
+					</md-input-container>
+                </div>
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Occupation</label>
+					    <input ng-model="vm.about.info.occupation">
+					</md-input-container>
+                </div>
+
+                <div  flex="50">
+                   <md-input-container>
+					    <label>Website</label>
+					    <input ng-model="vm.about.info.website">
+					</md-input-container>
+                </div>
+                <div  flex="100">
+                	<text-angular ng-model="vm.about.info.about_me"></text-angular>
+                <md-button class="md-raised md-primary" ng-click="vm.saveInformation()">Update</md-button>
+            	</div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+ </div>
