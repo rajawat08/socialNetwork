@@ -18,4 +18,4 @@ Route::post('auth/userdata', "AuthController@userdata");
 Route::post('auth/logout', "AuthController@logout");
 Route::post('auth/register', "AuthController@register");
 
-Route::controller("member","memberController");
+Route::controller("member","MemberController");
