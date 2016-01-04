@@ -51,6 +51,8 @@
             'app.auth.login',
             'app.auth.register',
             'app.auth.forgot-password',
-            'app.profile'
+            'app.profile',
+            'app.family',
+            'app.family.members'
         ]);
 })();

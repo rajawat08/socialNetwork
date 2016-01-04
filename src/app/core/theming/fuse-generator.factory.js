@@ -152,7 +152,7 @@
             }
             else
             {
-                fuseTheming.setActiveTheme('default');
+                fuseTheming.setActiveTheme('blue-grey'); // setting changed
             }
         }
 

@@ -13,7 +13,7 @@
         // Data
         vm.isOpen = false;
         vm.themes = fuseTheming.themes;
-
+        console.log(vm.themes);
         // Methods
         vm.setActiveTheme = setActiveTheme;
 
@@ -26,6 +26,7 @@
          */
         function setActiveTheme(themeName)
         {
+            console.log(themeName);
             // Set active theme
             fuseTheming.setActiveTheme(themeName);
 

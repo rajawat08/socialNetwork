@@ -20,10 +20,12 @@
 
         // Check if custom theme exist in cookies
         var customTheme = $cookies.getObject('customTheme');
+        
         if ( customTheme )
         {
             fuseThemes['custom'] = customTheme;
         }
+        //fuseThemes['custom'] = 'blue grey';
 
         $mdThemingProvider.alwaysWatchTheme(true);
 

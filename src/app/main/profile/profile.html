@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <div class="header md-accent-bg" layout="column" layout-align="center center" layout-gt-md="row" layout-align-gt-md="space-between end">
         <div class="user-info" layout="column" layout-align="center center" layout-gt-md="row" layout-align-gt-md="start center">
-            <img class="profile-image avatar huge" src="assets/images/avatars/katherine.jpg">
+            <img class="profile-image avatar huge" src="{{vm.profilePath}}{{vm.about.info.profile_icon}}">
 
             <div class="name">{{vm.about.name}}</div>
         </div>
@@ -54,6 +54,16 @@
                 <md-tab-body>
                     <md-content class="about-tab"
                                 ng-include="'app/main/profile/tabs/editProfile.html'">
+                    </md-content>
+                </md-tab-body>
+            </md-tab>
+            <md-tab>
+                <md-tab-label>
+                    <span translate="PROFILE.CHANGE_PICTURE"></span>
+                </md-tab-label>
+                <md-tab-body>
+                    <md-content class="about-tab"
+                                ng-include="'app/main/profile/tabs/profilePic.html'">
                     </md-content>
                 </md-tab-body>
             </md-tab>

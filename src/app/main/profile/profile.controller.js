@@ -6,11 +6,11 @@
         .controller('ProfileController', ProfileController);
 
     /** @ngInject */
-    function ProfileController(Timeline, About, PhotosVideos,$stateParams,userService,$location,$sce,$mdDialog,$scope)
+    function ProfileController(Timeline, About, PhotosVideos,$stateParams,userService,$location,$sce,$mdDialog,$scope,Upload,$route)
     {
         var vm = this;
         console.log($stateParams.username);
-
+        vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
 
         // Data
         //vm.posts = Timeline.posts;
@@ -26,6 +26,8 @@
             }
             vm.about = response.data.about;
             vm.about.info.birthday = new Date(vm.about.info.birthday);
+            //vm.about.info.profile_icon = vm.about.info.profile_icon;
+            console.log(vm.about);
         });
 
         vm.getAboutMe = function(){
@@ -67,19 +69,38 @@
     }
 
     $scope.showTabDialog = function(ev) {
-    $mdDialog.show({
-      controller: ProfileController,
-      templateUrl: 'app/main/profile/tabs/dialogs/tabDialog.tmpl.html',
-      parent: angular.element(document.body),
-      targetEvent: ev,
-      clickOutsideToClose:true
-    })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
+        $mdDialog.show({
+          controller: ProfileController,
+          templateUrl: 'app/main/profile/tabs/dialogs/tabDialog.tmpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true
+        })
+            .then(function(answer) {
+              $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+              $scope.status = 'You cancelled the dialog.';
+            });
+      };
+
+     // upload on file select or drop
+    $scope.upload = function (file) {
+         var userAuth = localStorage.getItem("authorization");
+        Upload.upload({
+            url: 'http://127.0.0.1:8080/socialNetwork/service/public/index.php/member/upload',
+            data: {file: file, 'auth': userAuth}
+        }).then(function (resp) {
+            console.log('Success uploaded. Response: ' + resp.data);
+            //vm.about.info.profile_icon = resp.data;
+            //vm.success = "Upload Successfully.";
+            $route.reload();
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
-  };
+    };
         
     }
 

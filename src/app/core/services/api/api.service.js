@@ -11,8 +11,8 @@
     function userService($http,$q,$rootScope){
 
         var userService = {};
-        //userService.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
-        userService.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
+        userService.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
+        //userService.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
         userService.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
 
         userService.getUserProfile = function(username){
@@ -68,13 +68,81 @@
 
 
         }
+        userService.findMember = function(keyword){
+            var deferred = $q.defer();
+             console.log("findMember METHOD",keyword);
+             var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth,
+                    "keyword" : keyword
+                }
+            });            
+            $http({
+                method: 'POST',
+                url: userService.dataUrl + 'member/find',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+        }
+
+        userService.addFamilyMember = function(member){
+            var deferred = $q.defer();
+             console.log("findMember METHOD");
+             var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth,
+                    "member" : member
+                }
+            });            
+            $http({
+                method: 'POST',
+                url: userService.dataUrl + 'member/addtofamily',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+        }
+
+        userService.getFamilyMembers = function(){
+            var deferred = $q.defer();
+            console.log("getFamilyMembers METHOD");
+            var userAuth = localStorage.getItem("authorization");
+            var data = JSON.stringify({               
+                "data": {
+                    "auth": userAuth
+                }
+            });            
+            $http({
+                method: 'POST',
+                url: userService.dataUrl + 'member/list',                
+                cache: true,
+                data: data                
+            }).then(function (response) {                       
+                console.log(response);
+                return deferred.resolve(response.data);
+            });
+
+            return deferred.promise;
+        }
         return userService;
 
     }
 
     function httpApiService($http,$q,$location,$rootScope){
         var auth = {};
-        auth.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
+        //auth.dataUrl = "http://manageamazon.com/socialNetwork/service/public/index.php/";
+        auth.dataUrl = "http://127.0.0.1:8080/socialNetwork/service/public/index.php/";
         auth.authorization = 'eyJhdXRoIjoiYTJlODRmMzEzMjQ4NmFhZjRjYWRhYmJhMGNkMDExYjkiLCJESVNUUklCVVRFRF9UT0tFTiI6IjU5ZWMzZDU4NDIxYjdmYzJiOWJkZjBkODU4MmQ2MWI0In0';
 
         auth.login = function(user,pass){

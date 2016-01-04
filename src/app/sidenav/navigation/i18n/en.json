@@ -1,5 +1,11 @@
 {
     "NAVIGATION": {
+        "MEMBER_ACCOUNT" : "My Account",
+        "MEMBER_PROFILE" : "My Profile",
+        "MEMBER_FAMILY_GROUP" : "My Family",
+        "MEMBER_FAMILY_DASHBOARD" : "Dashboard",
+        "MEMBER_FAMILY_MEMBERS" : "Members",
+        "MEMBER_FAMILY_ADD_MEMBER" : "Add Member",
         "DASHBOARDS": "Dashboards",
         "DASHBOARDV1": "Dashboard v1",
         "DASHBOARDV2": "Dashboard v2",

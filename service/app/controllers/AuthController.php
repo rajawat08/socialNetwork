@@ -2,6 +2,8 @@
 
 class AuthController extends \BaseController {
 
+
+	public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
 	/**
 	 * Display a listing of the resource.
 	 * GET /auth
@@ -45,6 +47,9 @@ class AuthController extends \BaseController {
 		//$auth = Auth::user();
 		//print_r($auth); echo 123;
 		$userData = User::where("remember_token",$data['auth'])->first();
+
+		$icon = UserInfo::where("user_id","=",$userData->id)->first();
+		$userData->profile_icon = self::$fullPath.$icon->profile_icon;
 		 if (!is_null($userData))
         {
             return Response::make(array('status' => true, 'data' =>$userData),200);

@@ -13,6 +13,6 @@ gulp.task('scripts', function ()
     return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
-        .pipe(browserSync.reload({stream: true}))
+        //.pipe(browserSync.reload({stream: true})) // setting changed
         .pipe($.size())
 });

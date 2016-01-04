@@ -23,6 +23,7 @@
             'timer',
             'ui.router',
             'uiGmapgoogle-maps',
-            'textAngular'
+            'textAngular',
+            'ngFileUpload'
         ]);
 })();

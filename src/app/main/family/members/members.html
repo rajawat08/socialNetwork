@@ -1,0 +1,107 @@
+
+        <div class="widget-group" layout="row" flex="100" layout-wrap>
+
+            <!-- WIDGET 5 -->
+            <ms-widget layout="column" flex="100">
+
+                <!-- Front -->
+                <ms-widget-front class="md-white-bg" layout="row" layout-wrap flex>
+
+                    <div class="padding-16" layout="column" layout-align="space-between" flex="100" flex-gt-sm="50"
+                         flex-gt-md="70">
+                        <div class="padding-bottom-16">
+                            <div class="h2 weight-500 padding-bottom-8">Members</div>
+                            <div class="secondary-text"></div>
+                        </div>
+
+                        <div flex>
+                            <table class="simple" >                               
+                                <tbody>
+                    <tr ng-repeat="item in vm.memberlist">
+                        <td ><img class="avatar" src="assets/images/avatars/profile.jpg"></td> 
+                        <td class="name">{{item.from_user_id != userData.id ? item.member_from.name : item.member_to.name}}</td>
+                        <td class="position">
+                            <md-tooltip md-direction="top">
+                              {{item.relation == 'parents' ? item.newParentComment : item.siblingsComment }}
+                            </md-tooltip>
+                            {{item.relation}}
+                        </td>
+                                              
+                    </tr>
+                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="padding-16" layout="column" layout-align="space-between"
+                         flex="100" flex-gt-sm="50"
+                         flex-gt-md="30">
+                        <div layout="column" class="padding-bottom-16">
+                            <div class="h2 weight-500 padding-bottom-8">
+                                <md-button class="sm-raised" ng-click="vm.isAddMemberOpen = true">Add Member</md-button>
+                                <md-button class="sm-raised" ng-show="vm.isAddMemberOpen" ng-click="vm.isAddMemberOpen =! vm.isAddMemberOpen">Cancel</md-button>
+                            </div>
+                            <div class="secondary-text"></div>
+                        </div>
+
+                        <div ng-show="vm.isAddMemberOpen" class="row"  layout="column" flex>
+                            
+                                <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      
+      <md-autocomplete 
+          ng-disabled="vm.isDisabled"        
+          md-selected-item="vm.newMemberSelectedItem"
+          md-search-text-change="vm.searchTextChange(vm.searchText)"
+          md-search-text="vm.searchText"
+          md-selected-item-change="vm.selectedItemChange(item)"
+          md-items="item in vm.querySearch(vm.searchText)"
+          md-item-text="item.display"
+          md-min-length="0"
+          placeholder="Search by Name">
+        <md-item-template>
+          <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+        </md-item-template>
+        <md-not-found>
+          No Member matching "{{vm.searchText}}" were found.          
+        </md-not-found>
+      </md-autocomplete>
+      <br/>
+      <label>Relation Type</label>
+
+      <md-radio-group ng-model="vm.member.relation">
+          <md-radio-button value="1" >Parents</md-radio-button>
+          <md-radio-button value="2"> Siblings </md-radio-button>     
+      </md-radio-group>
+
+      <md-input-container ng-show="vm.member.relation == 1">
+        <label>Reason for broakup</label>
+        <textarea rows="3" ng-model="vm.member.broakupComment" > </textarea>
+      </md-input-container>
+      <md-input-container ng-show="vm.member.relation == 1">
+        <label>Relation with new Parents</label>
+        <textarea rows="3" ng-model="vm.member.newParentComment" > </textarea>
+      </md-input-container>
+      <md-input-container ng-show="vm.member.relation == 2">
+        <label>Relation with Siblings</label>
+        <textarea rows="3" ng-model="vm.member.siblingsComment" > </textarea>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click="vm.addMember()">Add</md-button>
+      <md-button class="md-raised md-primary" ng-click="vm.isAddMemberOpen =! vm.isAddMemberOpen">Cancel</md-button>
+    </form>
+  </md-content>
+                                    
+                                
+                                
+                            
+                        </div>
+                    </div>
+
+                </ms-widget-front>
+                <!-- / Front -->
+
+            </ms-widget>
+            <!-- / WIDGET 5 -->
+
+        </div>
+        <!-- / WIDGET GROUP

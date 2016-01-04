@@ -11,7 +11,46 @@
         <span>Family Social Network</span>
     </ms-nav-item>
 
-   <!--  <ms-nav-item ms-nav-toggle>
+    <ms-nav-item ms-nav-toggle>
+        <a ms-nav-button md-ink-ripple>
+            <i class="icon-file-outline s16"></i>
+            <span class="ms-nav-label" translate="NAVIGATION.MEMBER_ACCOUNT"></span>
+            <i class="icon-chevron-down s16 arrow"></i>
+        </a>
+
+        <ms-nav-toggle-items>
+            <ms-nav-item >
+                <a ms-nav-button md-ink-ripple href="/profile/{{userData.username}}">
+                    <span class="ms-nav-label" translate="NAVIGATION.MEMBER_PROFILE"></span>
+                </a>
+            <ms-nav-item>
+            <ms-nav-item ms-nav-toggle>
+                <a ms-nav-button md-ink-ripple >
+                    <span class="ms-nav-label" translate="NAVIGATION.MEMBER_FAMILY_GROUP"></span>
+                    <i class="icon-chevron-down s16 arrow"></i>
+                </a>
+             <ms-nav-toggle-items>
+                <ms-nav-item >
+                <a ms-nav-button md-ink-ripple href="/profile/{{userData.username}}">
+                    <span class="ms-nav-label" translate="NAVIGATION.MEMBER_FAMILY_DASHBOARD"></span>
+                </a>
+                <ms-nav-item>
+                <ms-nav-item >
+                <a ms-nav-button md-ink-ripple href="/family/members">
+                    <span class="ms-nav-label" translate="NAVIGATION.MEMBER_FAMILY_MEMBERS"></span>
+                </a>
+                <ms-nav-item>
+
+                <ms-nav-item >
+                <a ms-nav-button md-ink-ripple href="/profile/{{userData.username}}">
+                    <span class="ms-nav-label" translate="NAVIGATION.MEMBER_FAMILY_ADD_MEMBER"></span>
+                </a>
+                <ms-nav-item>
+             </ms-nav-toggle-items>   
+            <ms-nav-item>
+        </ms-nav-toggle-items>
+    </ms-nav-item>
+    <!-- <ms-nav-item ms-nav-toggle>
         <a ms-nav-button md-ink-ripple>
             <i class="icon-tile-four s16"></i>
             <span class="ms-nav-label" translate="NAVIGATION.DASHBOARDS">Dashboards</span>
@@ -31,8 +70,8 @@
                 </a>
             </ms-nav-item>
         </ms-nav-toggle-items>
-    </ms-nav-item>
- -->
+    </ms-nav-item> -->
+
     <!-- <ms-nav-item>
         <a ms-nav-button ui-sref="app.calendar" ui-sref-active="active" md-ink-ripple>
             <i class="icon-calendar-today s16"></i>
@@ -564,6 +603,6 @@
                 </a>
             </ms-nav-item>
         </ms-nav-toggle-items>
-    </ms-nav-item> -->
-
+    </ms-nav-item>
+ -->
 </ms-nav>
