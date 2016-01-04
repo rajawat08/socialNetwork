@@ -1,6 +1,7 @@
 {
     "PROFILE": {
         "EDIT" : "Edit Profile",
+        "CHANGE_PICTURE" : "Change Picture",
         "FOLLOW": "Follow",
         "SEND_MESSAGE": "Send Message",
         "TIMELINE": "Timeline",
