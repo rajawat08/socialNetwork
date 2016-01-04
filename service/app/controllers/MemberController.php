@@ -4,8 +4,8 @@ class MemberController extends \BaseController {
 
 	public static $filePath = "./avatars";
 
-	public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
-
+	//public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+	public static $fullPath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
 	public function postProfile(){
 		//print_r(Input::all());
 		if(!Input::get('data')){

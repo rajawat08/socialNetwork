@@ -15,7 +15,8 @@
         vm.isDisabled    = false;
         vm.querySearch  = querySearch;
         vm.memberlist = {};
-        vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+        //vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+        vm.profilePath  = "http://manageamazon.com/socialNetwork/service/public/avatars/";
         userService.getFamilyMembers().then(function(response){
             vm.memberlist = response.data;
             console.log(vm.memberlist);

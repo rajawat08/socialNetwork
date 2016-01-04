@@ -10,7 +10,8 @@
     {
         var vm = this;
         console.log($stateParams.username);
-        vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+        //vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+        vm.profilePath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
 
         // Data
         //vm.posts = Timeline.posts;
@@ -86,14 +87,16 @@
      // upload on file select or drop
     $scope.upload = function (file) {
          var userAuth = localStorage.getItem("authorization");
+         
         Upload.upload({
-            url: 'http://127.0.0.1:8080/socialNetwork/service/public/index.php/member/upload',
+            url: 'http://manageamazon.com/socialNetwork/service/public/index.php/member/upload',
             data: {file: file, 'auth': userAuth}
         }).then(function (resp) {
             console.log('Success uploaded. Response: ' + resp.data);
             //vm.about.info.profile_icon = resp.data;
             //vm.success = "Upload Successfully.";
-            $route.reload();
+            //$route.reload();
+            window.location.reload();
         }, function (resp) {
             console.log('Error status: ' + resp.status);
         }, function (evt) {

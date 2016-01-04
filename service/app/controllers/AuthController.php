@@ -3,7 +3,8 @@
 class AuthController extends \BaseController {
 
 
-	public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+	//public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+	public static $fullPath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
 	/**
 	 * Display a listing of the resource.
 	 * GET /auth
@@ -91,7 +92,11 @@ class AuthController extends \BaseController {
 		$input['username'] = explode("@",$email)[0];
 		$input['name'] = $data['name'];
 		
-        User::create($input);
+        $user = User::create($input);
+
+        UserInfo::create([
+        	'user_id' => $user->id
+        ]);
 
         return Response::make(array('status' => true, 'message' => 'User Register Successfully',  'data' =>[]),200);
 
