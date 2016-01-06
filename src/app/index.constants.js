@@ -2,7 +2,7 @@
 {
     'use strict';
 	var domain = "http://127.0.0.1:8080";
-	//var domain = "http://manageamazon.com";
+	var domain = "http://manageamazon.com";
     angular
         .module('fuse')
         .constant('CONSTANTS',{
