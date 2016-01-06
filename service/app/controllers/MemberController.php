@@ -4,8 +4,8 @@ class MemberController extends \BaseController {
 
 	public static $filePath = "./avatars";
 
-	//public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
-	public static $fullPath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
+	public static $fullPath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
+	//public static $fullPath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
 	public function postProfile(){
 		//print_r(Input::all());
 		if(!Input::get('data')){
@@ -159,6 +159,39 @@ class MemberController extends \BaseController {
         		return Response::make(array('status' => true,'data' => self::$fullPath.$fileName),200);
         	}        	
         }
+	}
+
+	public function postAddpost(){
+		$input = Input::get('data'); 
+		
+		$user = User::where('remember_token','=',$input['auth'])->first();
+		
+		
+		if(!is_null($user)){
+			$post_for = date('Y-m-d',strtotime($input['post']['date']));
+			$post = [
+				'user_id' => $user->id,
+				'post_for' => $post_for,
+				'text' => $input['post']['text']
+				//'photo' => $input['text'],
+			];
+			$p = Post::create($post);
+			$p = Post::with("user")->find($p->id);
+			return Response::make(array('status' => true,'data' => $p),200);
+		}
+
+	}
+
+	public function postPosts(){
+		$input = Input::get('data'); 
+		$user = User::where('remember_token','=',$input['auth'])->first();
+		
+		
+		if(!is_null($user)){
+			$posts = Post::with('user')->where("user_id",'=',$user->id)->get();
+			return Response::make(array('status' => true,'data' => $posts),200);
+		}
+
 	}
 
 	public function gen_uuid() {

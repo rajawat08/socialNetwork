@@ -53,6 +53,7 @@
             'app.auth.forgot-password',
             'app.profile',
             'app.family',
-            'app.family.members'
+            'app.family.members',
+            'app.home'
         ]);
 })();

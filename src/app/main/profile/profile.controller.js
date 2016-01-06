@@ -6,12 +6,12 @@
         .controller('ProfileController', ProfileController);
 
     /** @ngInject */
-    function ProfileController(Timeline, About, PhotosVideos,$stateParams,userService,$location,$sce,$mdDialog,$scope,Upload,$route)
+    function ProfileController(Timeline, About, PhotosVideos,$stateParams,userService,$location,$sce,$mdDialog,$scope,Upload,$route,CONSTANTS,$rootScope)
     {
         var vm = this;
         console.log($stateParams.username);
-        //vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
-        vm.profilePath = "http://manageamazon.com/socialNetwork/service/public/avatars/";
+        
+        vm.profilePath = CONSTANTS.avatar_path;
 
         // Data
         //vm.posts = Timeline.posts;
@@ -27,7 +27,7 @@
             }
             vm.about = response.data.about;
             vm.about.info.birthday = new Date(vm.about.info.birthday);
-            //vm.about.info.profile_icon = vm.about.info.profile_icon;
+            vm.about.info.profile_icon = vm.about.info.profile_icon ? vm.profilePath + vm.about.info.profile_icon : null;
             console.log(vm.about);
         });
 
@@ -87,16 +87,22 @@
      // upload on file select or drop
     $scope.upload = function (file) {
          var userAuth = localStorage.getItem("authorization");
-         
+        $rootScope.loadingProgress = true;
         Upload.upload({
-            url: 'http://manageamazon.com/socialNetwork/service/public/index.php/member/upload',
+            url: CONSTANTS.api_path + 'member/upload',
             data: {file: file, 'auth': userAuth}
         }).then(function (resp) {
-            console.log('Success uploaded. Response: ' + resp.data);
+            console.log('Success uploaded. Response: ',resp);
             //vm.about.info.profile_icon = resp.data;
             //vm.success = "Upload Successfully.";
             //$route.reload();
-            window.location.reload();
+            //window.location.reload();
+            if(resp && resp.status){
+                $rootScope.userData.profile_icon = resp.data.data;
+                vm.about.info.profile_icon = resp.data.data;
+            }
+            
+            $rootScope.loadingProgress = false;
         }, function (resp) {
             console.log('Error status: ' + resp.status);
         }, function (evt) {

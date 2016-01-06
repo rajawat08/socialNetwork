@@ -6,10 +6,10 @@
         .controller('AppController', AppController);
 
     /** @ngInject */
-    function AppController(fuseTheming,$rootScope,$scope,auth,$location)
+    function AppController(fuseTheming,$rootScope,$scope,auth,$location,CONSTANTS)
     {
         var vm = this;
-
+        console.log(CONSTANTS);
         // Data
         vm.themes = fuseTheming.themes;
         var userAuth = localStorage.getItem("authorization");

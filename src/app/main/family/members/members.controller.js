@@ -6,7 +6,7 @@
         .controller('MembersController', MembersController);
 
     /** @ngInject */
-    function MembersController(Timeline, About,$stateParams,userService,$location,$sce,$mdDialog,$scope,$log,$q)
+    function MembersController(Timeline, About,$stateParams,userService,$location,$sce,$mdDialog,$scope,$log,$q,CONSTANTS)
     {
         var vm = this;
         
@@ -16,7 +16,7 @@
         vm.querySearch  = querySearch;
         vm.memberlist = {};
         //vm.profilePath = "http://127.0.0.1:8080/socialNetwork/service/public/avatars/";
-        vm.profilePath  = "http://manageamazon.com/socialNetwork/service/public/avatars/";
+        vm.profilePath  = CONSTANTS.avatar_path;
         userService.getFamilyMembers().then(function(response){
             vm.memberlist = response.data;
             console.log(vm.memberlist);

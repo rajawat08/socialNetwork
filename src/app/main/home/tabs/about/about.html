@@ -1,0 +1,149 @@
+<div layout="row" layout-wrap>
+
+    <div class="about" layout="column" flex="100" flex-gt-md="50" flex-gt-lg="65">
+        <div class="profile-box info-box general md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg">
+                <div class="title" translate="PROFILE.GENERAL_INFORMATION">General Information</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.GENDER">Gender</div>
+                    <div class="info">{{vm.about.info.gender ? (vm.about.info.gender == 'M' ? 'Male' : 'Female')  : "N/A" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.BIRTHDAY">Birthday</div>
+                    <div class="info">{{vm.about.info.birthday ? vm.about.info.birthday : "N/A" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.LOCATIONS">Locations                
+                    </div>
+                    
+                    <div class="info location" ng-repeat="location in vm.about.general.locations">
+                        <span>N/A</span>
+                        <md-icon md-font-icon="icon-map-marker" class="s16"></md-icon>
+                    </div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ABOUT_ME">About Me</div>
+                    <div class="info"  ng-bind-html="vm.getAboutMe()"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-box info-box work md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg">
+                <div class="title" translate="PROFILE.WORK">Work</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.OCCUPATION">Occupation</div>
+                    <div class="info">{{vm.about.info.occupation ? vm.about.info.occupation : "N/A" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.SKILLS">Skills</div>
+                    <div class="info">{{vm.about.info.job_skills ? vm.about.info.job_skills : "N/A" }}</div>
+                </div>
+
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.JOBS">Jobs</div>
+                    <table class="info jobs">
+                        <tr class="job" ng-repeat="job in vm.about.work.jobs">
+                            <td class="company">{{job.company}}</td>
+                            <td class="date">{{job.date}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-box info-box contact md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg">
+                <div class="title" translate="PROFILE.CONTACT">Contact</div>
+            </header>
+            <div class="content">
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.ADDRESS">Address</div>
+                    <div class="info">
+                        {{vm.about.info.Address ? vm.about.info.Address : "N/A" }}
+                        {{vm.about.info.city ? vm.about.info.city : "" }}
+                        {{vm.about.info.region ? vm.about.info.region : "" }}
+                        {{vm.about.info.country ? vm.about.info.country : "" }}
+                    </div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.TEL">Tel.</div>
+                    <div class="info" >
+                        <span>{{vm.about.info.phone ? vm.about.info.phone : "N/A" }}</span>
+                    </div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.WEBSITE">Website</div>
+                    <div class="info" >
+                        <span>{{vm.about.info.website ? vm.about.info.website : "N/A" }}</span>
+                    </div>
+                </div>
+                <div class="info-line">
+                    <div class="title" translate="PROFILE.EMAILS">Emails</div>
+                    <div class="info" >
+                        <span>{{vm.about.email}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="about-sidebar" layout="column" flex="100" flex-gt-md="50" flex-gt-lg="35">
+        <div class="profile-box friends md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg" layout="row" layout-align="space-between center">
+                <div class="title" translate="PROFILE.FRIENDS">Friends</div>
+                <div class="more secondary-text">
+                    <span translate="PROFILE.SEE">See</span>
+                    <span>454</span>
+                    <span translate="PROFILE.MORE">More</span>
+                </div>
+            </header>
+            <div class="content" layout="row" layout-wrap>
+                <div class="friend" flex="20" ng-repeat="friend in vm.about.friends">
+                    <img ng-src="{{friend.avatar}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-box groups md-whiteframe-z1" layout="column">
+            <header class="md-accent-bg" layout="row" layout-align="space-between center">
+                <div class="title" translate="PROFILE.JOINED_GROUPS">Joined Groups</div>
+                <div class="more secondary-text">
+                    <span translate="PROFILE.SEE">See</span>
+                    <span>6</span>
+                    <span translate="PROFILE.MORE">More</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="group" ng-repeat="group in vm.about.groups" layout="row"
+                     layout-align="space-between center">
+                    <div layout="row" layout-align="start center">
+                        <img ng-src="{{group.logo}}" class="logo" alt="{{group.name}}"/>
+
+                        <div>
+                            <div class="name">{{group.name}}</div>
+                            <div class="category">{{group.category}}</div>
+                            <div class="members">{{group.members}} people</div>
+                        </div>
+                    </div>
+                    <md-button class="md-icon-button" aria-label="more" translate
+                               translate-attr-aria-label="PROFILE.MORE">
+                        <md-icon md-font-icon="icon-dots-vertical"></md-icon>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>
